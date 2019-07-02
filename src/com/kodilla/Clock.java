@@ -1,42 +1,41 @@
 package com.kodilla;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Clock {
-    private int minutes;
-    private int hours;
+    private LocalDateTime time;
 
     Clock(int hours, int minutes) {
         if(hours < 0) {
-            this.hours = 0;
-        } else if(hours > 11) {
-            this.hours = 11;
+            hours = 0;
+        } else if(hours > 23) {
+            hours = 23;
         } else {
-            this.hours = hours;
+            hours = hours;
         }
 
         if(minutes < 0) {
-            this.minutes = 0;
+            minutes = 0;
         } else if(minutes > 59) {
-            this.minutes = 59;
+            minutes = 59;
         } else {
-            this.minutes = minutes;
+            minutes = minutes;
         }
+        this.time = LocalDate.now().atTime(hours,minutes);
     }
 
     public void addHours(int hours) {
-        this.hours = (this.hours + hours) % 12;
+        this.time= this.time.plusHours(hours);
     }
 
     public void addMinutes(int minutes) {
-        this.minutes += minutes;
-        if(this.minutes > 59) {
-            addHours(1);
-        }
-        this.minutes %= 60;
+        this.time= this.time.plusMinutes(minutes);
     }
 
 
 
     public String toString() {
-        return hours + ":" + (minutes < 10 ? "0" : "") + minutes;
+        return time.toLocalTime().toString();
     }
 }
