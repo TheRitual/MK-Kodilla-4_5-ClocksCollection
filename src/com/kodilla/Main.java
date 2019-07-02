@@ -9,7 +9,7 @@ public class Main {
         List<Clock> clocks = new LinkedList<>();
         clocks.add(new Clock(9,30));
         clocks.add(new Clock(21,59));
-        clocks.add(new Clock(23,59));
+        clocks.add(new Clock(25,59));
 
         clocks.stream().forEach(System.out::println);
 

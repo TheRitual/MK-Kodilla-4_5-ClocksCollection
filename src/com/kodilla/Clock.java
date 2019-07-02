@@ -11,16 +11,12 @@ public class Clock {
             hours = 0;
         } else if(hours > 23) {
             hours = 23;
-        } else {
-            hours = hours;
         }
 
         if(minutes < 0) {
             minutes = 0;
         } else if(minutes > 59) {
             minutes = 59;
-        } else {
-            minutes = minutes;
         }
         this.time = LocalDate.now().atTime(hours,minutes);
     }
@@ -32,8 +28,6 @@ public class Clock {
     public void addMinutes(int minutes) {
         this.time= this.time.plusMinutes(minutes);
     }
-
-
 
     public String toString() {
         return time.toLocalTime().toString();
